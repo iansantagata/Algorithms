@@ -20,7 +20,7 @@ else
 	echo "Unexpected venv directory structure - could not find activation command to automatically activate venv"
 	echo ""
 	echo "See this venv documentation for more details and possible manual activation paths: https://docs.python.org/3/library/venv.html#how-venvs-work"
-    #exit 1
+    exit 1
 fi
 
 # Completion

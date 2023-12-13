@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Acknowledgement
-echo "Bootstrapping environment..."
+echo "Bootstrapping local development environment..."
 echo ""
 
 # Script Dependencies
@@ -20,5 +20,5 @@ source $TOOLS_PATH/activate_venv.sh
 source $TOOLS_PATH/install_dependencies.sh
 
 # Completion
-echo "Completed environment bootstrap!"
+echo "Completed setup and activation of local development environment!"
 echo ""

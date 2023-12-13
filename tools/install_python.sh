@@ -39,8 +39,12 @@ case "$INSTALLED_VERSION" in
 		echo "Installing desired Python version: $PYTHON_VERSION"
 
 		pyenv install $PYTHON_VERSION
+		PYENV_INSTALL_STATUS=$?
 
-    	[ $? -ne 0 ] && echo "ERROR: Unable to install desired Python version: $PYTHON_VERSION" && exit 1
+		if [ $PYENV_INSTALL_STATUS -ne 0 ]; then
+			echo "ERROR: Unable to install desired Python version: $PYTHON_VERSION"
+			exit 1
+		fi
   		;;
 esac
 
