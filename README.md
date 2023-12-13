@@ -13,3 +13,11 @@ Each implemented algorithm should be:
 - Categorized with similar algorithms
 
 In short, each algorithm should be implemented in a straight-forward enough way that a novice programmer could understand, replicate, and execute each algorithm as needed.
+
+## Quick Start
+
+To get started with running, analyzing, and testing the code in this repository:
+
+1. Run `git clone` on this repository to get the code locally
+2. Run `source ./tools/bootstrap.sh` from the repository root to install everything you need and start up a virtual environment
+3. Run any algorithm, test, or analysis you like on the code!
