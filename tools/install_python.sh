@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Acknowledgement
-echo "Installing Python $PYTHON_VERSION (if necessary)..."
+echo "Installing Python (if necessary)..."
 
 # Script Dependencies
 source $(dirname "${BASH_SOURCE[0]}")/script_setup.sh
@@ -14,17 +14,6 @@ if ! command -v pyenv &>/dev/null; then
 	echo "See here for more details on installing pyenv: https://github.com/pyenv/pyenv"
 	echo "For Windows users, see the logically similar pyenv-win here: https://github.com/pyenv-win/pyenv-win"
 	exit 1
-fi
-
-if [ ! -s "$REPO_ROOT/.python-version" ]; then
-
-	echo "Creating .python-version file using Python version: $PYTHON_VERSION"
-
-    PREVIOUS_DIR=$(pwd)
-	cd $REPO_ROOT
-	pyenv local $PYTHON_VERSION
-	cd $PREVIOUS_DIR
-    unset $PREVIOUS_DIR
 fi
 
 INSTALLED_VERSION=$(pyenv versions | grep "$PYTHON_VERSION")
@@ -47,6 +36,17 @@ case "$INSTALLED_VERSION" in
 		fi
   		;;
 esac
+
+if [ ! -s "$REPO_ROOT/.python-version" ]; then
+
+	echo "Creating .python-version file using Python version: $PYTHON_VERSION"
+
+    PREVIOUS_DIR=$(pwd)
+	cd $REPO_ROOT
+	pyenv local $PYTHON_VERSION
+	cd $PREVIOUS_DIR
+    unset $PREVIOUS_DIR
+fi
 
 # Confirm Python Installation
 if ! command -v python &>/dev/null; then
