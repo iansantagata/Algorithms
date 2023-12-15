@@ -19,11 +19,23 @@ In short, each algorithm should be implemented in a straight-forward enough way 
 To get started with running, analyzing, developing, and/or testing the code in this repository:
 
 1. Run `git clone` on this repository to get the code locally
-2. Run `source ./tools/bootstrap.sh` from the repository root to install everything you need and start up a virtual environment
-3. Run any algorithm, test, or analysis you like on the code!
+2. Run `source ./tools/bootstrap.sh` in your shell at the repository root to install and activate the virtual environment
+3. Run any algorithm, test, or analysis you like using the code!
+
+The [tools/bootstrap.sh](tools/bootstrap.sh) script is comprised of several parts that can be individually run if needed.
+
+To exit the virtual environment once finished, run the command `deactivate` in your shell.
 
 ## Uninstallation
 
-If you want to remove everything related to this repository from your computer, you can simply `rm -rf REPOSITORY/ROOT/PATH` wherever the repository is stored locally at `REPOSITORY/ROOT/PATH`.  All files and actions are self-contained to the repository, so removing the repository from your computer removes all files, configuration, and anything installed.
+To delete everything related to this repository from your computer, run this command in a shell:
 
-If you want to simply remove only the development environment that you spun up from the *Quick Start* guide, run `source ./tools/teardown.sh` from the repository root!  This deactivates, removes, and uninstalls all components installed for this repository, including virtual environments, Python installations, and the repository's package dependencies.
+`rm -rf REPOSITORY/ROOT/PATH`
+
+where `REPOSITORY/ROOT/PATH` is where you cloned or stored the repository locally.
+
+To remove only the development environment that was created by running `source ./tools/bootstrap.sh`, run this command in your shell at repository root:
+
+`source ./tools/teardown.sh`
+
+This [tools/teardown.sh](tools/teardown.sh) script deactivates, removes, and uninstalls all components installed for this repository, including virtual environments, Python installations, and the repository's package dependencies.
