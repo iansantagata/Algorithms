@@ -19,23 +19,19 @@ In short, each algorithm should be implemented in a straight-forward enough way 
 To get started with running, analyzing, developing, and/or testing the code in this repository:
 
 1. Run `git clone` on this repository to get the code locally
-2. Run `source ./tools/bootstrap.sh` in your shell at the repository root to install and activate the virtual environment
+2. Run `source ./tools/bootstrap.sh` in your shell at the repository root
 3. Run any algorithm, test, or analysis you like using the code!
 
-The [tools/bootstrap.sh](tools/bootstrap.sh) script is comprised of several parts that can be individually run if needed.
+The [bootstrap script](tools/bootstrap.sh) is a setup script that installs and activates a virtual environment.  The bootstrap script is comprised of several sub-scripts that can be individually run, if needed.
 
 To exit the virtual environment once finished, run the command `deactivate` in your shell.
 
 ## Uninstallation
 
-To delete everything related to this repository from your computer, run this command in a shell:
-
-`rm -rf REPOSITORY/ROOT/PATH`
-
-where `REPOSITORY/ROOT/PATH` is where you cloned or stored the repository locally.
-
-To remove only the development environment that was created by running `source ./tools/bootstrap.sh`, run this command in your shell at repository root:
+To remove only the virtual environment but keep the code locally, run this command in your shell at repository root:
 
 `source ./tools/teardown.sh`
 
-This [tools/teardown.sh](tools/teardown.sh) script deactivates, removes, and uninstalls all components installed for this repository, including virtual environments, Python installations, and the repository's package dependencies.
+This [teardown script](tools/teardown.sh) deactivates, removes, and uninstalls all components installed for this repository including virtual environments, Python installations, and the repository's package dependencies.
+
+To delete everything related to this repository from your computer, simply delete your local copy of the repository in your file system.
