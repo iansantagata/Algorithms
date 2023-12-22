@@ -1,7 +1,8 @@
-import pytest
 import random
 
+import pytest
 from pytest import FixtureRequest
+
 
 @pytest.fixture(params=[
     pytest.param(10, id="10_elements"),

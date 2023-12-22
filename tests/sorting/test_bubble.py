@@ -1,8 +1,9 @@
+from typing import NoReturn
+
 import pytest
+
 from sorting.bubble import sort as bubble_sort
 from tests.helpers.assertions import assert_equivalent_lists
-
-from typing import NoReturn
 
 
 def test_sort_ordered_list(ordered_list: list) -> NoReturn:

@@ -1,5 +1,6 @@
 from typing import NoReturn
 
+
 def assert_equivalent_lists(first: list, second: list) -> NoReturn:
 
     assert len(first) == len(second)
