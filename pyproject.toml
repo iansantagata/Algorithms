@@ -1,0 +1,16 @@
+[project]
+name = "Algorithms"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+
+[tool.isort]
+profile = "black"
+
+[tool.pylint.main]
+ignore = ["CVS", "LICENSE", "README.md"]
+ignore-paths = ".venv"
+ignore-patterns = ["^.*\\.txt$", "^.*\\.toml$", "^.*\\.md$", "^.*\\.csv$"]
+
+[tool.pylint.format]
+max-line-length = "88"
