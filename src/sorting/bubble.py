@@ -32,24 +32,3 @@ def sort(input: list) -> list:
             break
 
     return input
-
-
-def print_list(input: list) -> NoReturn:
-    num_elements: int = len(input)
-
-    output = "("
-    for index in range(num_elements):
-        value = input[index]
-        output += f" {value} "
-
-    print(output)
-
-
-if __name__ == "__main__":
-    unsorted_list: list = [10, 0, 9, 1, 8, 2, 7, 3, 6, 4, 5]
-    print("Starting with input: ")
-    print_list(input=unsorted_list)
-
-    sorted_list: list = sort(input=unsorted_list)
-    print("Sorted output: ")
-    print_list(input=sorted_list)
