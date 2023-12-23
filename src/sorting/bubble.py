@@ -1,9 +1,6 @@
 """
 Bubble Sort - https://en.wikipedia.org/wiki/Bubble_sort
 """
-from typing import NoReturn
-
-
 def sort(input: list) -> list:
     num_elements: int = len(input)
 
