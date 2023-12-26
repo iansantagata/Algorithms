@@ -19,7 +19,7 @@ if ! command -v python &>/dev/null; then
 fi
 
 echo "Creating virtual environment in: $VENV_PATH"
-python -m venv $VENV_PATH --prompt $VENV_NAME --clear
+python -m venv $VENV_PATH --prompt $VENV_NAME --clear --upgrade-deps
 VENV_CREATION_STATUS=$?
 
 if [ $VENV_CREATION_STATUS -ne 0 ]; then
