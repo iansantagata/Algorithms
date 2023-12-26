@@ -64,7 +64,9 @@ def shuffled_list(ordered_list: list[int]) -> list[int]:
         ),
     ]
 )
-def partially_ordered_list(request: FixtureRequest, ordered_list: list[int]) -> list[int]:
+def partially_ordered_list(
+    request: FixtureRequest, ordered_list: list[int]
+) -> list[int]:
     ordered_percentage: float = request.param["ordered_percentage"]
     is_beginning_shuffled: bool = request.param["is_beginning_shuffled"]
 
