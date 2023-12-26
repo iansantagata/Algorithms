@@ -1,4 +1,4 @@
-name: MyPy
+name: Lint
 
 on:
   push:
@@ -7,6 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
+
   build:
     runs-on: ubuntu-latest
     strategy:
@@ -23,6 +24,35 @@ jobs:
         python -m pip install --upgrade pip
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
         if [ -f requirements-dev.txt ]; then pip install -r requirements-dev.txt; fi
+
+  black:
+    runs-on: ubuntu-latest
+    needs: [build]
+    steps:
+    - name: Run black
+      run: |
+        black --check --diff .
+
+  isort:
+    runs-on: ubuntu-latest
+    needs: [build]
+    steps:
+    - name: Run isort
+      run: |
+        isort --check-only --diff .
+
+  mypy:
+    runs-on: ubuntu-latest
+    needs: [build]
+    steps:
     - name: Run mypy
       run: |
         mypy --pretty --strict .
+
+  pylint:
+    runs-on: ubuntu-latest
+    needs: [build]
+    steps:
+    - name: Run pylint
+      run: |
+        pylint $(git ls-files '*.py')
