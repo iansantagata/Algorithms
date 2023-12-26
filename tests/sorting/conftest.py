@@ -1,8 +1,8 @@
 import random
+from typing import Any
 
 import pytest
 from pytest import FixtureRequest
-from typing import Any
 
 
 @pytest.fixture(

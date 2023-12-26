@@ -1,5 +1,6 @@
 from typing import Any
 
+
 def assert_equivalent_lists(first: list[Any], second: list[Any]) -> None:
     assert len(first) == len(second)
 
