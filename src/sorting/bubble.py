@@ -1,6 +1,8 @@
 """
 Bubble Sort - https://en.wikipedia.org/wiki/Bubble_sort
 """
+
+
 def sort(input: list) -> list:
     num_elements: int = len(input)
 
