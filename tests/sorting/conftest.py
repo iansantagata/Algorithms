@@ -2,6 +2,7 @@ import random
 
 import pytest
 from pytest import FixtureRequest
+from typing import Any
 
 
 @pytest.fixture(
@@ -12,26 +13,26 @@ from pytest import FixtureRequest
     ]
 )
 def data_set_length(request: FixtureRequest) -> int:
-    return request.param
+    return int(request.param)
 
 
 @pytest.fixture()
-def ordered_list(data_set_length: int) -> list:
+def ordered_list(data_set_length: int) -> list[int]:
     return list(range(data_set_length))
 
 
 @pytest.fixture()
-def reversed_list(ordered_list: list) -> list:
+def reversed_list(ordered_list: list[int]) -> list[int]:
     return list(reversed(ordered_list))
 
 
 @pytest.fixture()
-def duplicate_list(data_set_length: int, ordered_list: list) -> list:
+def duplicate_list(data_set_length: int, ordered_list: list[int]) -> list[int]:
     return [ordered_list[0]] * data_set_length
 
 
 @pytest.fixture()
-def shuffled_list(ordered_list: list) -> list:
+def shuffled_list(ordered_list: list[int]) -> list[int]:
     return random.sample(ordered_list, k=len(ordered_list))
 
 
@@ -63,7 +64,7 @@ def shuffled_list(ordered_list: list) -> list:
         ),
     ]
 )
-def partially_ordered_list(request: FixtureRequest, ordered_list: list) -> list:
+def partially_ordered_list(request: FixtureRequest, ordered_list: list[int]) -> list[int]:
     ordered_percentage: float = request.param["ordered_percentage"]
     is_beginning_shuffled: bool = request.param["is_beginning_shuffled"]
 
@@ -71,17 +72,17 @@ def partially_ordered_list(request: FixtureRequest, ordered_list: list) -> list:
     num_ordered_elements: int = int(total_num_elements * ordered_percentage)
 
     if is_beginning_shuffled:
-        ordered_ending: list = ordered_list[-num_ordered_elements:]
-        remaining_beginning_elements: list = ordered_list[:-num_ordered_elements]
-        shuffled_beginning: list = random.sample(
+        ordered_ending: list[int] = ordered_list[-num_ordered_elements:]
+        remaining_beginning_elements: list[int] = ordered_list[:-num_ordered_elements]
+        shuffled_beginning: list[int] = random.sample(
             remaining_beginning_elements, k=len(remaining_beginning_elements)
         )
 
         return shuffled_beginning + ordered_ending
 
-    ordered_beginning: list = ordered_list[:num_ordered_elements]
-    remaining_ending_elements: list = ordered_list[num_ordered_elements:]
-    shuffled_ending: list = random.sample(
+    ordered_beginning: list[int] = ordered_list[:num_ordered_elements]
+    remaining_ending_elements: list[int] = ordered_list[num_ordered_elements:]
+    shuffled_ending: list[int] = random.sample(
         remaining_ending_elements, k=len(remaining_ending_elements)
     )
 
@@ -89,8 +90,8 @@ def partially_ordered_list(request: FixtureRequest, ordered_list: list) -> list:
 
 
 @pytest.fixture()
-def random_list(ordered_list: list) -> list:
-    random_list: list = []
+def random_list(ordered_list: list[int]) -> list[int]:
+    random_list: list[int] = []
     first_element = ordered_list[0]
     last_element = ordered_list[-1]
 

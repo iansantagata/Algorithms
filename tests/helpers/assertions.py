@@ -1,4 +1,6 @@
-def assert_equivalent_lists(first: list, second: list) -> None:
+from typing import Any
+
+def assert_equivalent_lists(first: list[Any], second: list[Any]) -> None:
     assert len(first) == len(second)
 
     list_length: int = len(first)

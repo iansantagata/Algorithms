@@ -3,7 +3,7 @@ Bubble Sort - https://en.wikipedia.org/wiki/Bubble_sort
 """
 
 
-def sort(input: list) -> list:
+def sort(input: list[int]) -> list[int]:
     num_elements: int = len(input)
 
     # For input with 1 or fewer elements, the list is already in order
