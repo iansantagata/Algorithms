@@ -34,9 +34,10 @@ To exit the virtual environment once finished, run the command `deactivate` in y
 
 As a convenience, the [linting script](tools/lint.sh) and [testing script](tools/test.sh) can be executed locally in a virtual environment.  Both scripts require a virtual environment to be installed, bootstrapped, and activated.
 
-To lint the code in your local environment, run `source ./tools/lint.sh` in your shell at repository root.
+To lint or test the code in your local environment, run your desired command in your shell at repository root:
 
-To test the code in your local environment, run `source ./tools/test.sh` in your shell at repository root.
+- `source ./tools/lint.sh`
+- `source ./tools/test.sh`
 
 These scripts are meant to exactly mirror the automated linting and testing workflows on the `main` branch and used in pull requests.
 
