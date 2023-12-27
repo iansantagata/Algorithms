@@ -3,7 +3,7 @@
 <!-- Developmental Badges -->
 [![Lint](https://github.com/iansantagata/algorithms/actions/workflows/lint.yml/badge.svg)](https://github.com/iansantagata/algorithms/actions/workflows/lint.yml)
 [![Tests](https://github.com/iansantagata/algorithms/actions/workflows/test.yml/badge.svg)](https://github.com/iansantagata/algorithms/actions/workflows/test.yml)
-[![Code QL Scan](https://github.com/iansantagata/algorithms/actions/workflows/codeql.yml/badge.svg)](https://github.com/iansantagata/algorithms/actions/workflows/codeql.yml)
+[![Code QL](https://github.com/iansantagata/algorithms/actions/workflows/codeql.yml/badge.svg)](https://github.com/iansantagata/algorithms/actions/workflows/codeql.yml)
 
 # Algorithms
 
