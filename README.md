@@ -30,6 +30,18 @@ The [bootstrap script](tools/bootstrap.sh) is a setup script that installs and a
 
 To exit the virtual environment once finished, run the command `deactivate` in your shell.
 
+## Local Development
+
+As a convenience, the [linting script](tools/lint.sh) and [testing script](tools/test.sh) can be executed locally in a virtual environment.  These scripts are meant to exactly mirror the automated linting and testing workflows on the `main` branch and used in pull requests.
+
+To lint your local virtual development environment, run this command in your shell at repository root:
+
+`source ./tools/lint.sh`
+
+Similarly, to test your local virtual development environment, run this command in your shell at repository root:
+
+`source ./tools/test.sh`
+
 ## Uninstallation
 
 To remove only the virtual environment but keep the code locally, run this command in your shell at repository root:
