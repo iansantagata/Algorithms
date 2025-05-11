@@ -22,7 +22,7 @@ cd $REPO_ROOT
 
 # Test Code
 echo "Executing pytest..."
-pytest
+pytest -v
 echo "Completed execution of pytest!"
 echo ""
 

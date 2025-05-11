@@ -19,6 +19,11 @@ get_repo_root()
     echo "$REPO_ROOT"
 }
 
+echo_err()
+{
+    echo "$@" 1>&2;
+}
+
 # Environment Variables
 PYTHON_VERSION=3.12.1
 REPO_ROOT=$(get_repo_root)

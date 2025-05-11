@@ -3,9 +3,14 @@
 # pylint: disable=redefined-outer-name
 
 import random
+from typing import Callable
 
 import pytest
 from pytest import FixtureRequest
+
+from src.sorting.bubble import sort as bubble_sort
+
+SortingAlgorithmFunctionType = Callable[[list[int]], list[int]]
 
 
 @pytest.fixture(
@@ -104,3 +109,13 @@ def random_list(ordered_list: list[int]) -> list[int]:
         random_list.append(random.randrange(first_element, last_element))
 
     return random_list
+
+
+@pytest.fixture(
+    params=[
+        pytest.param(bubble_sort, id="bubble_sort_algorithm"),
+    ]
+)
+def sorting_algorithm(request: FixtureRequest) -> SortingAlgorithmFunctionType:
+    algorithm: SortingAlgorithmFunctionType = request.param
+    return algorithm

@@ -36,8 +36,8 @@ As a convenience, the [linting script](tools/lint.sh) and [testing script](tools
 
 To lint or test the code in your local environment, run your desired command in your shell at repository root:
 
-- `source ./tools/lint.sh`
-- `source ./tools/test.sh`
+- `./tools/lint.sh`
+- `./tools/test.sh`
 
 These scripts are meant to exactly mirror the automated linting and testing workflows on the `main` branch and used in pull requests.
 
