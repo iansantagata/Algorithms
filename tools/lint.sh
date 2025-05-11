@@ -13,7 +13,7 @@ if ! command -v black &>/dev/null; then
 	echo_err "black command is not installed or is not discoverable in PATH and is required"
 	echo_err ""
 	echo_err "Local development environment should be installed and boostrapped to execute linting."
-	exit 1
+	set_exit_mode && $EXIT 1
 fi
 
 if ! command -v isort &>/dev/null; then
@@ -21,7 +21,7 @@ if ! command -v isort &>/dev/null; then
 	echo_err "isort command is not installed or is not discoverable in PATH and is required"
 	echo_err ""
 	echo_err "Local development environment should be installed and boostrapped to execute linting."
-	exit 1
+	set_exit_mode && $EXIT 1
 fi
 
 if ! command -v mypy &>/dev/null; then
@@ -29,7 +29,7 @@ if ! command -v mypy &>/dev/null; then
 	echo_err "mypy command is not installed or is not discoverable in PATH and is required"
 	echo_err ""
 	echo_err "Local development environment should be installed and boostrapped to execute linting."
-	exit 1
+	set_exit_mode && $EXIT 1
 fi
 
 if ! command -v pylint &>/dev/null; then
@@ -37,7 +37,7 @@ if ! command -v pylint &>/dev/null; then
 	echo_err "pylint command is not installed or is not discoverable in PATH and is required"
 	echo_err ""
 	echo_err "Local development environment should be installed and boostrapped to execute linting."
-	exit 1
+	set_exit_mode && $EXIT 1
 fi
 
 # Move to Root Directory
@@ -97,7 +97,7 @@ unset $PREVIOUS_DIR
 if [ $ERRORS_FOUND = "true" ]; then
 	echo_err "Errors found when linting code in local development environment!"
 	echo_err ""
-	exit 1
+	set_exit_mode && $EXIT 1
 fi
 
 echo "No errors found when linting code in local development environment."

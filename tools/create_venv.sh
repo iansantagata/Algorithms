@@ -15,7 +15,7 @@ fi
 if ! command -v python &>/dev/null; then
 
 	echo_err "python command is not executable or is not discoverable in PATH and is required"
-	exit 1
+	set_exit_mode && $EXIT 1
 fi
 
 echo "Creating virtual environment in: $VENV_PATH"
@@ -24,7 +24,7 @@ VENV_CREATION_STATUS=$?
 
 if [ $VENV_CREATION_STATUS -ne 0 ]; then
 	echo_err "ERROR: Unable to create Python virtual env at: $VENV_PATH"
-	exit 1
+	set_exit_mode && $EXIT 1
 fi
 
 # Completion

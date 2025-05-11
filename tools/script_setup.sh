@@ -19,9 +19,27 @@ get_repo_root()
     echo "$REPO_ROOT"
 }
 
+is_sourced() {
+    if [ -n "$ZSH_VERSION" ]; then 
+        case $ZSH_EVAL_CONTEXT in *:file:*) return 0;; esac  # sourced
+    else  # Add additional POSIX-compatible shell names here, if needed
+        case ${0##*/} in bash|-bash|sh|-sh) return 0;; esac  # sourced
+    fi
+    return 1  # NOT sourced
+}
+
 echo_err()
 {
     echo "$@" 1>&2;
+}
+
+set_exit_mode()
+{
+    if is_sourced; then
+        EXIT=return
+    else
+        EXIT=exit
+    fi
 }
 
 # Environment Variables

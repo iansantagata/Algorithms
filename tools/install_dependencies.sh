@@ -12,7 +12,7 @@ if ! command -v pip &>/dev/null; then
 	echo_err "pip command is not installed or is not discoverable in PATH and is required"
 	echo_err ""
 	echo_err "Check your Python installation to see that pip is installed appropriately."
-	exit 1
+	set_exit_mode && $EXIT 1
 fi
 
 pip install -r $REPO_ROOT/requirements*.txt

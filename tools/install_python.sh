@@ -13,7 +13,7 @@ if ! command -v pyenv &>/dev/null; then
 	echo_err ""
 	echo_err "See here for more details on installing pyenv: https://github.com/pyenv/pyenv"
 	echo_err "For Windows users, see the logically similar pyenv-win here: https://github.com/pyenv-win/pyenv-win"
-	exit 1
+	set_exit_mode && $EXIT 1
 fi
 
 INSTALLED_VERSION=$(pyenv versions | grep "$PYTHON_VERSION")
@@ -32,7 +32,7 @@ case "$INSTALLED_VERSION" in
 
 		if [ $PYENV_INSTALL_STATUS -ne 0 ]; then
 			echo_err "ERROR: Unable to install desired Python version: $PYTHON_VERSION"
-			exit 1
+			set_exit_mode && $EXIT 1
 		fi
   		;;
 esac
@@ -52,7 +52,7 @@ fi
 if ! command -v python &>/dev/null; then
 
 	echo_err "python command is not executable or is not discoverable in PATH and is required"
-	exit 1
+	set_exit_mode && $EXIT 1
 
 elif [ "$(python --version | awk '{print $2}')" != "$PYTHON_VERSION" ]; then
 	
@@ -60,7 +60,7 @@ elif [ "$(python --version | awk '{print $2}')" != "$PYTHON_VERSION" ]; then
 	echo_err ""
 	echo_err "There may be a problem with which Python version is being detected"
 	echo_err "Try `which python` in this repository to determine if the python command being used is not using the correct path"
-	exit 1
+	set_exit_mode && $EXIT 1
 fi
 
 # Completion

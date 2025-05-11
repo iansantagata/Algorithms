@@ -14,7 +14,7 @@ if ! command -v pyenv &>/dev/null; then
 	echo_err ""
 	echo_err "See here for more details on installing pyenv: https://github.com/pyenv/pyenv"
 	echo_err "For Windows users, see the logically similar pyenv-win here: https://github.com/pyenv-win/pyenv-win"
-	exit 1
+	set_exit_mode && $EXIT 1
 fi
 
 INSTALLED_VERSION=$(pyenv versions | grep "$PYTHON_VERSION")
