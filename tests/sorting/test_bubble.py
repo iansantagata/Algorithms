@@ -1,7 +1,7 @@
 # pylint: disable=missing-module-docstring
 # pylint: disable=missing-function-docstring
 
-from src.sorting.bubble import sort as bubble_sort
+from sorting.bubble import sort as bubble_sort
 from tests.helpers.assertions import assert_equivalent_lists
 
 
