@@ -38,7 +38,7 @@ def sort(data: list[int]) -> list[int]:
         swap_occurred: bool = False
 
         # The last i elements are already in their proper place, so we can stop at that
-        # point rather than needing to check every element again.
+        # point rather than needing to check every element again
         for j in range(1, num_elements - i):
             # Compare one earlier element to the current element and switch the values
             # if they are out of order
