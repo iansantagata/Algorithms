@@ -5,7 +5,7 @@ Bubble Sort https://en.wikipedia.org/wiki/Bubble_sort
 
 def sort(data: list[int]) -> list[int]:
     """
-    Bubble Sort - https://en.wikipedia.org/wiki/Bubble_sort
+    Bubble Sort
 
     Performance:
     - Worst Case: O(n²)

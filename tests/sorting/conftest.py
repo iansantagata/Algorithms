@@ -15,9 +15,11 @@ SortingAlgorithmFunctionType = Callable[[list[int]], list[int]]
 
 @pytest.fixture(
     params=[
-        pytest.param(10, id="10_elements"),
-        pytest.param(100, id="100_elements"),
-        pytest.param(1000, id="1000_elements"),
+        pytest.param(0, id="0 Elements"),
+        pytest.param(1, id="1 Element"),
+        pytest.param(10, id="10 Elements"),
+        pytest.param(100, id="100 Elements"),
+        pytest.param(1000, id="1000 Elements"),
     ]
 )
 def data_set_length(request: FixtureRequest) -> int:
@@ -35,8 +37,12 @@ def reversed_list(ordered_list: list[int]) -> list[int]:
 
 
 @pytest.fixture()
-def duplicate_list(data_set_length: int, ordered_list: list[int]) -> list[int]:
-    return [ordered_list[0]] * data_set_length
+def duplicates_list(data_set_length: int) -> list[int]:
+    if data_set_length == 0:
+        return []
+
+    duplicates_list = [0] * data_set_length
+    return duplicates_list
 
 
 @pytest.fixture()
@@ -48,27 +54,27 @@ def shuffled_list(ordered_list: list[int]) -> list[int]:
     params=[
         pytest.param(
             {"ordered_percentage": 0.25, "is_beginning_shuffled": True},
-            id="shuffled_first_25%",
+            id="Shuffled First 25%",
         ),
         pytest.param(
             {"ordered_percentage": 0.25, "is_beginning_shuffled": False},
-            id="shuffled_last_25%",
+            id="Shuffled Last 25%",
         ),
         pytest.param(
             {"ordered_percentage": 0.50, "is_beginning_shuffled": True},
-            id="shuffled_first_50%",
+            id="Shuffled First 50%",
         ),
         pytest.param(
             {"ordered_percentage": 0.50, "is_beginning_shuffled": False},
-            id="shuffled_last_50%",
+            id="Shuffled Last 50%",
         ),
         pytest.param(
             {"ordered_percentage": 0.75, "is_beginning_shuffled": True},
-            id="shuffled_first_75%",
+            id="Shuffled First 75%",
         ),
         pytest.param(
             {"ordered_percentage": 0.75, "is_beginning_shuffled": False},
-            id="shuffled_last_75%",
+            id="Shuffled Last 75%",
         ),
     ]
 )
@@ -102,6 +108,9 @@ def partially_ordered_list(
 @pytest.fixture()
 def random_list(ordered_list: list[int]) -> list[int]:
     random_list: list[int] = []
+    if len(ordered_list) <= 1:
+        return ordered_list
+
     first_element = ordered_list[0]
     last_element = ordered_list[-1]
 
@@ -113,7 +122,7 @@ def random_list(ordered_list: list[int]) -> list[int]:
 
 @pytest.fixture(
     params=[
-        pytest.param(bubble_sort, id="bubble_sort_algorithm"),
+        pytest.param(bubble_sort, id="Bubble Sort Algorithm"),
     ]
 )
 def sorting_algorithm(request: FixtureRequest) -> SortingAlgorithmFunctionType:

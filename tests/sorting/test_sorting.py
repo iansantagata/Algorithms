@@ -26,11 +26,11 @@ def test_sort_revered_list(
     assert_equivalent_lists(output, expected)
 
 
-def test_sort_duplicate_list(
-    duplicate_list: list[int], sorting_algorithm: SortingAlgorithmFunctionType
+def test_sort_duplicates_list(
+    duplicates_list: list[int], sorting_algorithm: SortingAlgorithmFunctionType
 ) -> None:
-    output: list[int] = sorting_algorithm(duplicate_list)
-    expected: list[int] = sorted(duplicate_list)
+    output: list[int] = sorting_algorithm(duplicates_list)
+    expected: list[int] = sorted(duplicates_list)
 
     assert_equivalent_lists(output, expected)
 
