@@ -16,8 +16,8 @@ def sort(data: list[int]) -> list[int]:
 
     Algorithm:
 
-    Basically, starting with the first element and considering pairs of elements, move
-    the bigger element of the pair toward the end by swapping the values.
+    Starting with the first element and considering pairs of elements, move the bigger
+    element of the pair toward the end by swapping the values.
 
     Continue like this, moving down the list, pair by pair, until the end of the list is
     reached.  At this point, the last element of the list is necessarily the greatest

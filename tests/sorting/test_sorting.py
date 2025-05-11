@@ -17,7 +17,7 @@ def test_sort_ordered_list(
     assert_equivalent_lists(output, expected)
 
 
-def test_sort_revered_list(
+def test_sort_reversed_list(
     reversed_list: list[int], sorting_algorithm: SortingAlgorithmFunctionType
 ) -> None:
     output: list[int] = sorting_algorithm(reversed_list)

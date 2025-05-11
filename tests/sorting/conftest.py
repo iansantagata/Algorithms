@@ -9,6 +9,7 @@ import pytest
 from pytest import FixtureRequest
 
 from src.sorting.bubble import sort as bubble_sort
+from src.sorting.insertion import sort as insertion_sort
 
 SortingAlgorithmFunctionType = Callable[[list[int]], list[int]]
 
@@ -123,6 +124,7 @@ def random_list(ordered_list: list[int]) -> list[int]:
 @pytest.fixture(
     params=[
         pytest.param(bubble_sort, id="Bubble Sort Algorithm"),
+        pytest.param(insertion_sort, id="Insertion Sort Algorithm"),
     ]
 )
 def sorting_algorithm(request: FixtureRequest) -> SortingAlgorithmFunctionType:
