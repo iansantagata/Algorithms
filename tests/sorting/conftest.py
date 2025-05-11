@@ -1,6 +1,9 @@
-# pylint: disable=missing-module-docstring
-# pylint: disable=missing-function-docstring
-# pylint: disable=redefined-outer-name
+"""
+Configuration file for sorting algorithm related tests.
+
+Mostly used to setup common fixtures such as generating similar data sets sets to test
+on all sorting algorithms.
+"""
 
 import random
 from typing import Callable
@@ -15,43 +18,62 @@ SortingAlgorithmFunctionType = Callable[[list[int]], list[int]]
 
 
 @pytest.fixture(
+    name="data_set_length",
     params=[
         pytest.param(0, id="0 Elements"),
         pytest.param(1, id="1 Element"),
         pytest.param(10, id="10 Elements"),
         pytest.param(100, id="100 Elements"),
         pytest.param(1000, id="1000 Elements"),
-    ]
+    ],
 )
-def data_set_length(request: FixtureRequest) -> int:
+def fixture_data_set_length(request: FixtureRequest) -> int:
+    """
+    Fixture representing the intended length of the data set to be generated.
+    """
     return int(request.param)
 
 
-@pytest.fixture()
-def ordered_list(data_set_length: int) -> list[int]:
+@pytest.fixture(name="ordered_list")
+def fixture_ordered_list(data_set_length: int) -> list[int]:
+    """
+    Fixture representing an ordered list of unique values of some size.
+    """
     return list(range(data_set_length))
 
 
-@pytest.fixture()
-def reversed_list(ordered_list: list[int]) -> list[int]:
+@pytest.fixture(name="reversed_list")
+def fixture_reversed_list(ordered_list: list[int]) -> list[int]:
+    """
+    Fixture representing a reverse-ordered list of unique values of some size.
+    """
     return list(reversed(ordered_list))
 
 
-@pytest.fixture()
-def duplicates_list(data_set_length: int) -> list[int]:
+@pytest.fixture(name="duplicates_list")
+def fixture_duplicates_list(data_set_length: int) -> list[int]:
+    """
+    Fixture representing a list of some size with each value as the same number.
+
+    The value is a random non-negative integer bounded by the intended list size.
+    """
     if data_set_length == 0:
         return []
 
-    duplicates_list = [0] * data_set_length
+    duplicates_list = [random.randint(0, data_set_length)] * data_set_length
     return duplicates_list
 
 
-@pytest.fixture()
-def shuffled_list(ordered_list: list[int]) -> list[int]:
+@pytest.fixture(name="shuffled_list")
+def fixture_shuffled_list(ordered_list: list[int]) -> list[int]:
+    """
+    Fixture representing a fully shuffled list of some size consisting of unique values.
+    """
     return random.sample(ordered_list, k=len(ordered_list))
 
 
 @pytest.fixture(
+    name="partially_ordered_list",
     params=[
         pytest.param(
             {"ordered_percentage": 0.25, "is_beginning_shuffled": True},
@@ -77,11 +99,17 @@ def shuffled_list(ordered_list: list[int]) -> list[int]:
             {"ordered_percentage": 0.75, "is_beginning_shuffled": False},
             id="Shuffled Last 75%",
         ),
-    ]
+    ],
 )
-def partially_ordered_list(
+def fixture_partially_ordered_list(
     request: FixtureRequest, ordered_list: list[int]
 ) -> list[int]:
+    """
+    Fixture representing a partially ordered list containing unique values.
+
+    The partially ordered subset is either at the beginning or end of the list,
+    while the unordered subset contains shuffled values.
+    """
     ordered_percentage: float = request.param["ordered_percentage"]
     is_beginning_shuffled: bool = request.param["is_beginning_shuffled"]
 
@@ -106,27 +134,37 @@ def partially_ordered_list(
     return ordered_beginning + shuffled_ending
 
 
-@pytest.fixture()
-def random_list(ordered_list: list[int]) -> list[int]:
+@pytest.fixture(name="random_list")
+def fixture_random_list(data_set_length: int) -> list[int]:
+    """
+    Fixture representing an entirely random list of values (may contain duplicates).
+
+    Each value is a random non-negative integer bounded by the intended list size.
+    """
+    if data_set_length == 0:
+        return []
+
     random_list: list[int] = []
-    if len(ordered_list) <= 1:
-        return ordered_list
-
-    first_element = ordered_list[0]
-    last_element = ordered_list[-1]
-
-    while len(random_list) < len(ordered_list):
-        random_list.append(random.randrange(first_element, last_element))
+    while len(random_list) < data_set_length:
+        random_value = random.randint(0, data_set_length)
+        random_list.append(random_value)
 
     return random_list
 
 
 @pytest.fixture(
+    name="sorting_algorithm",
     params=[
         pytest.param(bubble_sort, id="Bubble Sort Algorithm"),
         pytest.param(insertion_sort, id="Insertion Sort Algorithm"),
-    ]
+    ],
 )
-def sorting_algorithm(request: FixtureRequest) -> SortingAlgorithmFunctionType:
+def fixture_sorting_algorithm(request: FixtureRequest) -> SortingAlgorithmFunctionType:
+    """
+    Fixture representing all the possible sorting algorithms to test.
+
+    Each algorithm here should have the following function signature:
+      - def sort(data: list[int]) -> list[int]
+    """
     algorithm: SortingAlgorithmFunctionType = request.param
     return algorithm
