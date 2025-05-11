@@ -16,23 +16,23 @@ def sort(data: list[int]) -> list[int]:
 
     Algorithm:
 
-    Consider the data set as consisting of two mutually exclusive subsets of data: sorted
-    data first, and then unsorted data afterward.  The first element of the data set is
-    considered to be sorted from the start.  The second element of the data set is defined
-    as the start of the unsorted data.
+    Consider the data set as consisting of two mutually exclusive subsets of data:
+    sorted data first, and then unsorted data afterward.  The first element of the data
+    set is considered to be sorted from the start.  The second element of the data set
+    is defined as the start of the unsorted data.
 
-    Find the first unsorted data element and store the value in that position.  Target the
-    element before the stored value.  If the stored value is smaller than the target value,
-    copy the target value to one spot after itself, and change the target to be the element
-    before the previous target.  Continue comparing stored value vs target value until the
-    stored value is not smaller then the target value.  When that happens, copy the stored
-    value to this location.
+    Find the first unsorted data element and store the value in that position.  Target
+    the element before the stored value.  If the stored value is smaller than the target
+    value, copy the target value to one spot after itself, and change the target to be
+    the element before the previous target.  Continue comparing stored value vs target
+    value until the stored value is not smaller then the target value.  When that
+    happens, copy the stored value to this location.
 
-    At this point, this value has been added to and sorted within the subset of sorted data.
-    This also means the subset of unsorted data has decreased by one element.
+    At this point, this value has been added to and sorted within the subset of sorted
+    data.  This also means the subset of unsorted data has decreased by one element.
 
-    Continue this process until there are no longer any unsorted elements remaining.  The
-    result will be a data set that consists entirely of the subset of sorted data.
+    Continue this process until there are no longer any unsorted elements remaining.
+    The result will be a data set that consists entirely of the subset of sorted data.
     """
     num_elements: int = len(data)
 
@@ -46,7 +46,8 @@ def sort(data: list[int]) -> list[int]:
         # Elements up to i are sorted, so grab the next value to sort
         value_to_be_sorted = data[i]
 
-        # Start the look-back comparison (e.g. target) one position before the stored value
+        # Start the look-back comparison (e.g. target) one position before the
+        # stored value
         j = i - 1
         while j >= 0 and value_to_be_sorted < data[j]:
             # The value is smaller than the target, so move the target data down
@@ -54,7 +55,7 @@ def sort(data: list[int]) -> list[int]:
             data[j + 1] = data[j]
             j -= 1
 
-        # Once the correct position has been found, insert the value to the correct position
+        # Once the correct position has been found, insert the value there
         data[j + 1] = value_to_be_sorted
 
     return data

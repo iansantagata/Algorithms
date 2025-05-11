@@ -14,7 +14,7 @@ fi
 
 if ! command -v python &>/dev/null; then
 
-	echo "python command is not executable or is not discoverable in PATH and is required"
+	echo_err "python command is not executable or is not discoverable in PATH and is required"
 	exit 1
 fi
 
@@ -23,7 +23,7 @@ python -m venv $VENV_PATH --prompt $VENV_NAME --clear --upgrade-deps
 VENV_CREATION_STATUS=$?
 
 if [ $VENV_CREATION_STATUS -ne 0 ]; then
-	echo "ERROR: Unable to create Python virtual env at: $VENV_PATH" 
+	echo_err "ERROR: Unable to create Python virtual env at: $VENV_PATH"
 	exit 1
 fi
 

@@ -9,10 +9,10 @@ source $(dirname "${BASH_SOURCE[0]}")/script_setup.sh
 # Python Version Installation
 if ! command -v pyenv &>/dev/null; then
 
-	echo "pyenv command is not installed or is not discoverable in PATH and is required"
-	echo ""
-	echo "See here for more details on installing pyenv: https://github.com/pyenv/pyenv"
-	echo "For Windows users, see the logically similar pyenv-win here: https://github.com/pyenv-win/pyenv-win"
+	echo_err "pyenv command is not installed or is not discoverable in PATH and is required"
+	echo_err ""
+	echo_err "See here for more details on installing pyenv: https://github.com/pyenv/pyenv"
+	echo_err "For Windows users, see the logically similar pyenv-win here: https://github.com/pyenv-win/pyenv-win"
 	exit 1
 fi
 
@@ -31,7 +31,7 @@ case "$INSTALLED_VERSION" in
 		PYENV_INSTALL_STATUS=$?
 
 		if [ $PYENV_INSTALL_STATUS -ne 0 ]; then
-			echo "ERROR: Unable to install desired Python version: $PYTHON_VERSION"
+			echo_err "ERROR: Unable to install desired Python version: $PYTHON_VERSION"
 			exit 1
 		fi
   		;;
@@ -51,15 +51,15 @@ fi
 # Confirm Python Installation
 if ! command -v python &>/dev/null; then
 
-	echo "python command is not executable or is not discoverable in PATH and is required"
+	echo_err "python command is not executable or is not discoverable in PATH and is required"
 	exit 1
 
 elif [ "$(python --version | awk '{print $2}')" != "$PYTHON_VERSION" ]; then
 	
-	echo "python command version $(python --version) does not match desired version: $PYTHON_VERSION"
-	echo ""
-	echo "There may be a problem with which Python version is being detected"
-	echo "Try `which python` in this repository to determine if the python command being used is not using the correct path"
+	echo_err "python command version $(python --version) does not match desired version: $PYTHON_VERSION"
+	echo_err ""
+	echo_err "There may be a problem with which Python version is being detected"
+	echo_err "Try `which python` in this repository to determine if the python command being used is not using the correct path"
 	exit 1
 fi
 

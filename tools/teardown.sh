@@ -10,10 +10,10 @@ source $(dirname "${BASH_SOURCE[0]}")/script_setup.sh
 # Environment Teardown
 if ! command -v pyenv &>/dev/null; then
 
-	echo "pyenv command is not installed or is not discoverable in PATH and is required"
-	echo ""
-	echo "See here for more details on installing pyenv: https://github.com/pyenv/pyenv"
-	echo "For Windows users, see the logically similar pyenv-win here: https://github.com/pyenv-win/pyenv-win"
+	echo_err "pyenv command is not installed or is not discoverable in PATH and is required"
+	echo_err ""
+	echo_err "See here for more details on installing pyenv: https://github.com/pyenv/pyenv"
+	echo_err "For Windows users, see the logically similar pyenv-win here: https://github.com/pyenv-win/pyenv-win"
 	exit 1
 fi
 

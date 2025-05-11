@@ -9,9 +9,9 @@ source $(dirname "${BASH_SOURCE[0]}")/script_setup.sh
 # Python Dependencies Installation
 if ! command -v pip &>/dev/null; then
 
-	echo "pip command is not installed or is not discoverable in PATH and is required"
-	echo ""
-	echo "Check your Python installation to see that pip is installed appropriately."
+	echo_err "pip command is not installed or is not discoverable in PATH and is required"
+	echo_err ""
+	echo_err "Check your Python installation to see that pip is installed appropriately."
 	exit 1
 fi
 

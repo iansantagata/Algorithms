@@ -10,9 +10,9 @@ source $(dirname "${BASH_SOURCE[0]}")/script_setup.sh
 # Check Environment
 if ! command -v pytest &>/dev/null; then
 
-	echo "pytest command is not installed or is not discoverable in PATH and is required"
-	echo ""
-	echo "Local development environment should be installed and boostrapped to execute testing."
+	echo_err "pytest command is not installed or is not discoverable in PATH and is required"
+	echo_err ""
+	echo_err "Local development environment should be installed and boostrapped to execute testing."
 	exit 1
 fi
 
@@ -21,15 +21,28 @@ PREVIOUS_DIR=$(pwd)
 cd $REPO_ROOT
 
 # Test Code
+ERRORS_FOUND="false"
+
 echo "Executing pytest..."
 pytest -v
-echo "Completed execution of pytest!"
+if [ "$?" != "0" ]; then
+	echo_err "Errors found when executing pytest!"
+	ERRORS_FOUND="true"
+else
+	echo "No errors found from pytest."
+fi
 echo ""
 
 # Move Back to Previous Directory
 cd $PREVIOUS_DIR
 unset $PREVIOUS_DIR
 
-# Completion
-echo "Completed linting of code in local development environment!"
+# Report Completion
+if [ $ERRORS_FOUND = "true" ]; then
+	echo_err "Errors found when testing code in local development environment!"
+	echo_err ""
+	exit 1
+fi
+
+echo "No errors found when testing code in local development environment."
 echo ""
