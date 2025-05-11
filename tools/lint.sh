@@ -51,6 +51,7 @@ echo "Executing black..."
 black --check --diff $REPO_ROOT
 if [ "$?" != "0" ]; then
 	echo_err "Errors found when executing black!" 
+	echo_err "Try running 'black .' in repository root to fix formatting issues."
 	ERRORS_FOUND="true"
 else
 	echo "No errors found from black."
@@ -61,6 +62,7 @@ echo "Executing isort..."
 isort --check-only --diff $REPO_ROOT
 if [ "$?" != "0" ]; then
 	echo_err "Errors found when executing isort!"
+	echo_err "Try running 'isort .' in repository root to fix formatting issues."
 	ERRORS_FOUND="true"
 else
 	echo "No errors found from isort."
