@@ -15,7 +15,7 @@ if ! command -v pip &>/dev/null; then
 	exit 1
 fi
 
-pip install -r $REPO_ROOT/requirements.txt
+pip install -r $REPO_ROOT/requirements*.txt
 
 # Completion
 echo "Completed installation of Python dependencies!"
