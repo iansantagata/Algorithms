@@ -1,5 +1,5 @@
 """
-Selection Sort - https://en.wikipedia.org/wiki/Insertion_sort
+Selection Sort - https://en.wikipedia.org/wiki/Selection_sort
 """
 
 
