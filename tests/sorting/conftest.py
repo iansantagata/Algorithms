@@ -13,8 +13,8 @@ from pytest import FixtureRequest
 
 from src.sorting.bubble import sort as bubble_sort
 from src.sorting.insertion import sort as insertion_sort
-from src.sorting.selection import sort as selection_sort
 from src.sorting.merge import sort as merge_sort
+from src.sorting.selection import sort as selection_sort
 
 SortingAlgorithmFunctionType = Callable[[list[int]], list[int]]
 

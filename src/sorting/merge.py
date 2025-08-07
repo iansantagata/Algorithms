@@ -18,19 +18,21 @@ def sort(data: list[int]) -> list[int]:
 
     Algorithm:
 
-    Start by measuring the size of the data set.  If the data set has one or fewer elements,
-    return the data set as-is since it is technically sorted.
+    Start by measuring the size of the data set.  If the data set has one or fewer
+    elements, return the data set as-is since it is technically sorted.
 
-    For all other size lists, split the data set in half (or as close as possible) that will
-    be referred to as the "left" subset of data and the "right" subset of data.  Use recursion
-    to call the same sorting function on each of the subsets of data (left and right).
-    
-    With these newly sorted subsets, compare the first element of the left data set with the
-    first element of the right data set.  Insert the smaller value of the two onto the end of
-    a new data store and remove the element from the data set it came from (left or right).
+    For all other size lists, split the data set in half (or as close as possible) that
+    will be referred to as the "left" subset of data and the "right" subset of data.
+    Use recursion to call the same sorting function on each of the subsets of data
+    (left and right).
 
-    Continue like this until all elements have been removed from the left and right data sets.
-    The resulting data store that both subsets were merged into is now sorted.
+    With these newly sorted subsets, compare the first element of the left data set with
+    the first element of the right data set.  Insert the smaller value of the two onto
+    the end of a new data store and remove the element from the data set it came from
+    (left or right).
+
+    Continue like this until all elements have been removed from the left and right data
+    sets. The resulting data store that both subsets were merged into is now sorted.
     """
     num_elements: int = len(data)
 
@@ -38,9 +40,9 @@ def sort(data: list[int]) -> list[int]:
     # For input with 1 or fewer elements, the list is already in order
     if num_elements <= 1:
         return data
-    
+
     # Recursive Case #
-    # Divide the data into two equal (or as near-equal as possible) sized subsets of data
+    # Divide the data into two equal (or as near-equal as possible) sized subsets
     mid_point_index = math.floor(num_elements / 2)
     left_side = data[:mid_point_index]
     right_side = data[mid_point_index:]
@@ -49,7 +51,8 @@ def sort(data: list[int]) -> list[int]:
     left_side = sort(left_side)
     right_side = sort(right_side)
 
-    # Finally, merge the two sorted subsets of data, starting when both sides still have elements
+    # Finally, merge the two sorted subsets of data, starting when both sides
+    # still have elements
     merged_data = []
     while len(left_side) != 0 and len(right_side) != 0:
         first_element_left = left_side[0]
@@ -62,7 +65,8 @@ def sort(data: list[int]) -> list[int]:
             merged_data.append(first_element_right)
             right_side = right_side[1:]
 
-    # One side still has elements, so loop through the remaining elements for each side to end with a completely sorted data set
+    # One side still has elements, so loop through the remaining elements for each side
+    # to end with a completely sorted data set
     while len(left_side) != 0:
         first_element_left = left_side[0]
         merged_data.append(first_element_left)

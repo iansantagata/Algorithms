@@ -22,7 +22,7 @@ def sort(data: list[int]) -> list[int]:
 
     Find the first unsorted data element and store the value in that position.  Moving
     through the unsorted data elements, find the lowest value and its position.  Once
-    found, swap the value with the element in the first unsorted data element's position.
+    found, swap the value with that of the first unsorted data element.
 
     At this point, this value has been added to and sorted within the subset of sorted
     data.  This also means the subset of unsorted data has decreased by one element.
