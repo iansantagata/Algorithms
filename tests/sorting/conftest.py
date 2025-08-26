@@ -6,6 +6,7 @@ on all sorting algorithms.
 """
 
 import random
+import sys
 from typing import Callable
 
 import pytest
@@ -14,6 +15,7 @@ from pytest import FixtureRequest
 from src.sorting.bubble import sort as bubble_sort
 from src.sorting.insertion import sort as insertion_sort
 from src.sorting.merge import sort as merge_sort
+from src.sorting.quick import sort as quick_sort
 from src.sorting.selection import sort as selection_sort
 
 SortingAlgorithmFunctionType = Callable[[list[int]], list[int]]
@@ -161,6 +163,7 @@ def fixture_random_list(data_set_length: int) -> list[int]:
         pytest.param(insertion_sort, id="Insertion Sort Algorithm"),
         pytest.param(selection_sort, id="Selection Sort Algorithm"),
         pytest.param(merge_sort, id="Merge Sort"),
+        pytest.param(quick_sort, id="Quick Sort"),
     ],
 )
 def fixture_sorting_algorithm(request: FixtureRequest) -> SortingAlgorithmFunctionType:
@@ -172,3 +175,18 @@ def fixture_sorting_algorithm(request: FixtureRequest) -> SortingAlgorithmFuncti
     """
     algorithm: SortingAlgorithmFunctionType = request.param
     return algorithm
+
+
+@pytest.fixture(scope="session", autouse=True)
+def fixture_increase_recursion_depth_limit_for_tests() -> None:
+    """
+    Fixture for setting the number of frames that can be used for recursive purposes.
+
+    Several tests require recursion of around 1000 frames.
+    This value may be at or below 1000.
+
+    Increasing this value is generally not recommended, but increasing it by a small
+    amount for testing purposes only should be relatively harmless.
+    """
+    recursion_depth_limit_for_tests = 1100
+    sys.setrecursionlimit(recursion_depth_limit_for_tests)

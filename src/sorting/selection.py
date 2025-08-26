@@ -5,7 +5,7 @@ Selection Sort - https://en.wikipedia.org/wiki/Selection_sort
 
 def sort(data: list[int]) -> list[int]:
     """
-    Insertion Sort
+    Selection Sort
 
     Performance:
     - Worst Case: O(n²)

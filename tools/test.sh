@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Acknowledgement
-echo "Linting code in local development environment..."
+echo "Testing code in local development environment..."
 echo ""
 
 # Script Dependencies
